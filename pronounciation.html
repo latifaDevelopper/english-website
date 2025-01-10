@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pronunciation - Learn English Now</title>
+    <style>
+        /* Shared styles */
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(90deg, #4facfe, #00c6ff);
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        main {
+            padding: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+        h2 {
+            color: #4facfe;
+        }
+        .accordion {
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+        .accordion-header {
+            background-color: #4facfe;
+            color: white;
+            padding: 15px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .accordion-header:hover {
+            background-color: #1d8cf8;
+        }
+        .accordion-content {
+            display: none;
+            padding: 15px;
+            background-color: #fff;
+            font-size: 1rem;
+            color: #555;
+            border-top: 1px solid #ddd;
+        }
+        .accordion-content.active {
+            display: block;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: white;
+            text-decoration: none;
+            background-color: #4facfe;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            width: 200px;
+            margin: 0 auto;
+        }
+        a:hover {
+            background-color: #1d8cf8;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pronunciation Lessons</h1>
+    </header>
+    <main>
+        <h2>Why Focus on Pronunciation?</h2>
+        <p>
+            Good pronunciation makes your English clearer and more professional. Practice the sounds and rhythm of the language!
+        </p>
+
+        <h2>Practice Areas</h2>
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Vowel Sounds</div>
+                <div class="accordion-content">
+                    <p>Understand and practice long and short vowels.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Consonant Sounds</div>
+                <div class="accordion-content">
+                    <p>Learn how to pronounce tricky consonants like 'th' and 'r'.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Word Stress</div>
+                <div class="accordion-content">
+                    <p>Learn which syllable to emphasize in a word.</p>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">Intonation</div>
+                <div class="accordion-content">
+                    <p>Master the melody of English sentences.</p>
+                </div>
+            </div>
+        </div>
+        <a href="lessons.html">Back to Lessons</a>
+    </main>
+    <script>
+        function toggleAccordion(element) {
+            const content = element.nextElementSibling;
+            content.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

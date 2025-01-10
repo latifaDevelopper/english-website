@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lessons - Learn English Now</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #4facfe;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .categories {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+        }
+
+        .category {
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            padding: 20px;
+            margin: 20px;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .category:hover {
+            transform: scale(1.05);
+            background-color: #e3f2fd; /* Light blue hover effect */
+        }
+
+        .category img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .category h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+        }
+
+        .category a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #4facfe;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .category a:hover {
+            background-color: #1d8cf8; /* Darker blue */
+        }
+
+        .example {
+            margin: 40px auto;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .example p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .example button {
+            font-size: 1rem;
+            padding: 10px 20px;
+            background-color: #4facfe;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .example button:hover {
+            background-color: #1d8cf8;
+        }
+
+        .example-answer {
+            font-size: 1.2rem;
+            color: #4caf50; /* Green color for answer */
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>English Lessons</h1>
+    </header>
+
+    <div class="categories">
+        <div class="category">
+            <img src="gr.jpg" alt="Grammar">
+            <h2>Grammar</h2>
+            <a href="grammar.html">Explore Grammar</a>
+        </div>
+
+        <div class="category">
+            <img src="voc.jpg" alt="Vocabulary" >
+            <h2>Vocabulary</h2>
+            <a href="vocabulary.html">Explore Vocabulary</a>
+        </div>
+
+        <div class="category">
+            <img src="pr.jpg" alt="Pronunciation">
+            <h2>Pronunciation</h2>
+            <a href="pronounciation.html">Explore Pronunciation</a>
+        </div>
+    </div>
+
+
+
+    <script>
+        function showAnswer() {
+            document.getElementById('answer').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn English Now</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Lato', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7faff;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #2c2c2c;
+      color: #ffffff;
+    }
+
+    header {
+      text-align: center;
+      background: #007bff;
+      color: #ffffff;
+      padding: 20px 10px;
+    }
+
+    header h1 {
+      font-size: 28px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #004aad;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #0056b3;
+    }
+
+    .typing-effect {
+      font-size: 24px;
+      font-weight: bold;
+      color: #004aad;
+      text-align: center;
+      margin: 20px 0;
+      height: 30px; /* Prevents content shifting */
+    }
+
+    section {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    /* Tips Accordion */
+    .tip {
+      margin-bottom: 10px;
+    }
+
+    .tip-title {
+      font-weight: bold;
+      cursor: pointer;
+      background: #e0e7ff;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 5px 0;
+      transition: background-color 0.3s;
+    }
+
+    .tip-title:hover {
+      background-color: #d0dfff;
+    }
+
+    .tip-content {
+      display: none;
+      padding: 10px;
+      background: #ffffff;
+      border-left: 4px solid #007bff;
+      border-radius: 5px;
+    }
+
+    /* Resource Cards */
+    .resources {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .resource-card {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.3s;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .resource-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .dark-mode .resource-card {
+      background: #444;
+      border-color: #666;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    .dark-mode-toggle.dark {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dark Mode Toggle -->
+  <button class="dark-mode-toggle" id="darkModeToggle">Dark Mode</button>
+
+  <!-- Header -->
+  <header>
+    <h1>Learn English Now</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#tips">Tips</a>
+    <a href="#resources">Resources</a>
+  </nav>
+
+  <!-- Typing Effect -->
+  <div class="typing-effect" id="typing"></div>
+
+  <!-- Main Content -->
+  <section id="home">
+    <h2>Welcome to Learn English Now!</h2>
+    <p>Improve your English with fun and interactive lessons! Start your journey today and see your skills grow.</p>
+  </section>
+
+  <section id="tips">
+    <h2>Tips for Learning English</h2>
+    <div id="tipsContainer"></div>
+  </section>
+
+  <section id="resources">
+    <h2>Useful Resources</h2>
+    <div class="resources" id="resourcesContainer"></div>
+  </section>
+
+  <script>
+    // Typing Effect
+    const typingTexts = ["Learn English Faster!", "Improve Your Skills!", "Join Us Today!"];
+    let typingIndex = 0;
+    let charIndex = 0;
+    const typingElement = document.getElementById("typing");
+    let typingPaused = false;
+
+    function type() {
+      if (!typingPaused && charIndex < typingTexts[typingIndex].length) {
+        typingElement.textContent += typingTexts[typingIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(type, 100);
+      } else if (!typingPaused) {
+        setTimeout(erase, 2000);
+      }
+    }
+
+    function erase() {
+      if (!typingPaused && charIndex > 0) {
+        typingElement.textContent = typingTexts[typingIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(erase, 50);
+      } else if (!typingPaused) {
+        typingIndex = (typingIndex + 1) % typingTexts.length;
+        setTimeout(type, 1000);
+      }
+    }
+
+    type();
+
+    // Dynamic Tips
+    const tips = [
+      { title: "Read Books", content: "Read books, articles, and newspapers in English to build vocabulary." },
+      { title: "Watch Movies", content: "Watch English movies or shows with subtitles to improve listening." },
+      { title: "Speak Daily", content: "Practice speaking with friends or online communities." },
+    ];
+
+    const tipsContainer = document.getElementById("tipsContainer");
+    tips.forEach(tip => {
+      const tipDiv = document.createElement("div");
+      tipDiv.classList.add("tip");
+
+      const tipTitle = document.createElement("div");
+      tipTitle.classList.add("tip-title");
+      tipTitle.textContent = tip.title;
+
+      const tipContent = document.createElement("div");
+      tipContent.classList.add("tip-content");
+      tipContent.textContent = tip.content;
+
+      tipTitle.addEventListener("click", () => {
+        tipContent.style.display = tipContent.style.display === "none" ? "block" : "none";
+      });
+
+      tipDiv.appendChild(tipTitle);
+      tipDiv.appendChild(tipContent);
+      tipsContainer.appendChild(tipDiv);
+    });
+
+    // Dynamic Resources
+    const resources = [
+      { name: "Duolingo", link: "https://www.duolingo.com", image: "https://via.placeholder.com/200x150?text=Duolingo" },
+      { name: "BBC Learning English", link: "https://www.bbc.co.uk/learningenglish", image: "https://via.placeholder.com/200x150?text=BBC" },
+    ];
+
+    const resourcesContainer = document.getElementById("resourcesContainer");
+    resources.forEach(resource => {
+      const card = document.createElement("div");
+      card.classList.add("resource-card");
+
+      const img = document.createElement("img");
+      img.src = resource.image;
+
+      const name = document.createElement("p");
+      name.textContent = resource.name;
+
+      const link = document.createElement("a");
+      link.href = resource.link;
+      link.target = "_blank";
+      link.textContent = "Visit";
+
+      card.appendChild(img);
+      card.appendChild(name);
+      card.appendChild(link);
+      resourcesContainer.appendChild(card);
+    });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      darkModeToggle.classList.toggle("dark");
+    });
+  </script>
+</body>
+</html>
