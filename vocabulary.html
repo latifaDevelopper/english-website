@@ -1,143 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocabulary - Learn English Now</title>
-    <style>
-        /* Shared styles */
-        body {
-            margin: 0;
-            font-family: 'Lato', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(90deg, #00f2fe, #4facfe);
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        main {
-            padding: 20px;
-            animation: fadeIn 1s ease-in;
-        }
-        h2 {
-            color: #00f2fe;
-        }
-        .accordion {
-            margin: 20px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        .accordion-item {
-            border-bottom: 1px solid #ddd;
-        }
-        .accordion-item:last-child {
-            border-bottom: none;
-        }
-        .accordion-header {
-            background-color: #00f2fe;
-            color: white;
-            padding: 15px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .accordion-header:hover {
-            background-color: #1d8cf8;
-        }
-        .accordion-content {
-            display: none;
-            padding: 15px;
-            background-color: #fff;
-            font-size: 1rem;
-            color: #555;
-            border-top: 1px solid #ddd;
-        }
-        .accordion-content.active {
-            display: block;
-        }
-        a {
-            display: block;
-            margin-top: 20px;
-            color: white;
-            text-decoration: none;
-            background-color: #00f2fe;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-align: center;
-            width: 200px;
-            margin: 0 auto;
-        }
-        a:hover {
-            background-color: #1d8cf8;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vocabulary - Learn English Now</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Lato', sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: linear-gradient(90deg, #00f2fe, #4facfe);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    main {
+      padding: 20px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    h2 {
+      color: #00f2fe;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .accordion {
+      margin: 20px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid #ddd;
+    }
+
+    .accordion-item:last-child {
+      border-bottom: none;
+    }
+
+    .accordion-header {
+      background-color: #00f2fe;
+      color: white;
+      padding: 15px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .accordion-header:hover {
+      background-color: #1d8cf8;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 15px;
+      background-color: #fff;
+      font-size: 1rem;
+      color: #555;
+      border-top: 1px solid #ddd;
+    }
+
+    .accordion-content.active {
+      display: block;
+    }
+
+    a {
+      display: block;
+      margin-top: 20px;
+      color: white;
+      text-decoration: none;
+      background-color: #00f2fe;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-align: center;
+      width: 220px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: background-color 0.3s;
+    }
+
+    a:hover {
+      background-color: #1d8cf8;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .accordion-header {
+        font-size: 1.1rem;
+        padding: 12px;
+      }
+
+      .accordion-content {
+        font-size: 0.95rem;
+        padding: 12px;
+      }
+
+      a {
+        width: 180px;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .accordion-header {
+        font-size: 1rem;
+        padding: 10px;
+      }
+
+      .accordion-content {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
+
+      a {
+        width: 160px;
+        font-size: 0.9rem;
+        padding: 6px 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Vocabulary Lessons</h1>
-    </header>
-    <main>
-        <h2>Why Learn Vocabulary?</h2>
-        <p>
-            Vocabulary is the key to understanding and being understood. The more words you know, the more effectively you can communicate!
-        </p>
+  <header>
+      <h1>Vocabulary Lessons</h1>
+  </header>
+  <main>
+      <h2>Why Learn Vocabulary?</h2>
+      <p>
+          Vocabulary is the key to understanding and being understood. The more words you know, the more effectively you can communicate!
+      </p>
 
-        <h2>Topics to Explore</h2>
-        <div class="accordion">
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">Common Words</div>
-                <div class="accordion-content">
-                    <p>Learn essential words for everyday conversations.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">Synonyms and Antonyms</div>
-                <div class="accordion-content">
-                    <p>Expand your vocabulary with similar and opposite words.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">Phrasal Verbs</div>
-                <div class="accordion-content">
-                    <p>Master common English phrases used in daily life.</p>
-                </div>
-            </div>
-            <div class="accordion-item">
-                <div class="accordion-header" onclick="toggleAccordion(this)">Idioms</div>
-                <div class="accordion-content">
-                    <p>Discover popular idioms to speak more naturally.</p>
-                </div>
-            </div>
-        </div>
-        <a href="lessons.html">Back to Lessons</a>
-    </main>
-    <script>
-        function toggleAccordion(element) {
-            const content = element.nextElementSibling;
-            content.classList.toggle('active');
-        }
-    </script>
+      <h2>Topics to Explore</h2>
+      <div class="accordion">
+          <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">Common Words</div>
+              <div class="accordion-content">
+                  <p>Learn essential words for everyday conversations.</p>
+              </div>
+          </div>
+          <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">Synonyms and Antonyms</div>
+              <div class="accordion-content">
+                  <p>Expand your vocabulary with similar and opposite words.</p>
+              </div>
+          </div>
+          <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">Phrasal Verbs</div>
+              <div class="accordion-content">
+                  <p>Master common English phrases used in daily life.</p>
+              </div>
+          </div>
+          <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">Idioms</div>
+              <div class="accordion-content">
+                  <p>Discover popular idioms to speak more naturally.</p>
+              </div>
+          </div>
+      </div>
+      <a href="lessons.html">Back to Lessons</a>
+  </main>
+  <script>
+      function toggleAccordion(element) {
+          const content = element.nextElementSibling;
+          content.classList.toggle('active');
+      }
+  </script>
 </body>
 </html>
