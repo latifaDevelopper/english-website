@@ -125,6 +125,21 @@
       display: none;
       margin-top: 20px;
     }
+    .back-button {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: #4facfe;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #1d8cf8;
+}
+
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 1024px) {
@@ -218,6 +233,9 @@
       <a href="pronounciation.html">Explore Pronunciation</a>
     </div>
   </div>
+<div style="text-align: center; margin: 40px 0;">
+  <a href="index.html" class="back-button">← Back to Home</a>
+</div>
 
   <script>
     function showAnswer() {
