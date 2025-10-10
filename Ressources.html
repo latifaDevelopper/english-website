@@ -218,6 +218,21 @@
         font-size: 16px;
       }
     }
+    .back-button {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  background-color: #4facfe;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #1d8cf8;
+}
+
   </style>
 </head>
 <body>
@@ -253,6 +268,10 @@
   <section id="resources">
     <h2>Useful Resources</h2>
     <div class="resources" id="resourcesContainer"></div>
+    <div style="text-align: center; margin: 40px 0;">
+  <a href="index.html" class="back-button">← Back to Home</a>
+</div>
+
   </section>
 
   <script>
