@@ -91,6 +91,41 @@
       color: #721c24;
       border: 1px solid #f5c2c7;
     }
+
+    /* Buttons after finishing quiz */
+    .finish-buttons {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .finish-buttons button {
+      margin: 8px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .retry-btn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .retry-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .back-btn {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .back-btn:hover {
+      background-color: #1e7e34;
+    }
   </style>
 </head>
 <body>
@@ -98,6 +133,7 @@
     <h1>Test Your English Skills</h1>
     <p>Select the correct answers to the questions below:</p>
 
+    <!-- Questions -->
     <div class="question">
       <p><strong>1. What is the plural of "child"?</strong></p>
       <button class="option" data-correct="false">Childs</button>
@@ -111,81 +147,83 @@
       <button class="option" data-correct="false">Angry</button>
       <button class="option" data-correct="false">Sad</button>
     </div>
+
     <div class="question">
       <p><strong>3. What is the past tense of 'run'?</strong></p>
       <button class="option" data-correct="false">Runned</button>
       <button class="option" data-correct="true">Ran</button>
       <button class="option" data-correct="false">Run</button>
     </div>
-    
+
     <div class="question">
       <p><strong>4. Which word is a synonym for 'big'?</strong></p>
       <button class="option" data-correct="true">Large</button>
       <button class="option" data-correct="false">Small</button>
       <button class="option" data-correct="false">Tiny</button>
     </div>
-    
+
     <div class="question">
       <p><strong>5. How do you spell the number 9?</strong></p>
       <button class="option" data-correct="false">Nin</button>
       <button class="option" data-correct="false">Nien</button>
       <button class="option" data-correct="true">Nine</button>
     </div>
-    
+
     <div class="question">
       <p><strong>6. What is the opposite of 'cold'?</strong></p>
       <button class="option" data-correct="true">Hot</button>
       <button class="option" data-correct="false">Warm</button>
       <button class="option" data-correct="false">Cool</button>
     </div>
-    
+
     <div class="question">
       <p><strong>7. What is the plural of 'mouse'?</strong></p>
       <button class="option" data-correct="false">Mouses</button>
       <button class="option" data-correct="true">Mice</button>
       <button class="option" data-correct="false">Mouse</button>
     </div>
-    
+
     <div class="question">
       <p><strong>8. Which one is a fruit?</strong></p>
       <button class="option" data-correct="true">Apple</button>
       <button class="option" data-correct="false">Carrot</button>
       <button class="option" data-correct="false">Potato</button>
     </div>
-    
+
     <div class="question">
       <p><strong>9. Which sentence is correct?</strong></p>
       <button class="option" data-correct="false">She run to the park.</button>
       <button class="option" data-correct="true">She runs to the park.</button>
       <button class="option" data-correct="false">She running to the park.</button>
     </div>
-    
+
     <div class="question">
       <p><strong>10. What is the capital of France?</strong></p>
       <button class="option" data-correct="false">London</button>
       <button class="option" data-correct="true">Paris</button>
       <button class="option" data-correct="false">Rome</button>
     </div>
-    
+
     <div class="question">
       <p><strong>11. What color is the sky on a clear day?</strong></p>
       <button class="option" data-correct="true">Blue</button>
       <button class="option" data-correct="false">Green</button>
       <button class="option" data-correct="false">Yellow</button>
     </div>
-    
+
     <div class="question">
       <p><strong>12. How many days are there in a week?</strong></p>
       <button class="option" data-correct="true">Seven</button>
       <button class="option" data-correct="false">Five</button>
       <button class="option" data-correct="false">Ten</button>
     </div>
-    
 
+    <!-- Score -->
     <div class="score-container">
       <p><strong>Score:</strong> <span id="score">0</span></p>
     </div>
 
+    <!-- Messages -->
     <div class="congratulations" id="congratulations">
       🎉 Congratulations! You answered all questions correctly! 🎉
     </div>
@@ -193,17 +231,20 @@
     <div class="better-luck" id="better-luck">
       😔 Better luck next time! Try again to improve your score! 😔
     </div>
+
+    <!-- Finish Buttons -->
+    <div class="finish-buttons" id="finish-buttons">
+      <button class="retry-btn" id="retry-btn">Retry</button>
+      <button class="back-btn" id="back-btn">Back to Lesson</button>
+    </div>
   </div>
 
   <script>
     let score = 0;
     let answeredQuestions = 0;
     const totalQuestions = document.querySelectorAll('.question').length;
-
-    // Select all option buttons
     const options = document.querySelectorAll('.option');
 
-    // Add event listeners to each button
     options.forEach(option => {
       option.addEventListener('click', function () {
         const isCorrect = option.dataset.correct === 'true';
@@ -215,24 +256,31 @@
           option.classList.add('incorrect');
         }
 
-        // Disable all buttons for the current question
         const siblings = option.parentElement.querySelectorAll('.option');
         siblings.forEach(btn => btn.disabled = true);
 
         answeredQuestions++;
-
-        // Update the score
         document.getElementById('score').textContent = score;
 
-        // Check if all questions are answered
         if (answeredQuestions === totalQuestions) {
           if (score === totalQuestions) {
             document.getElementById('congratulations').style.display = 'block';
           } else {
             document.getElementById('better-luck').style.display = 'block';
           }
+          document.getElementById('finish-buttons').style.display = 'block';
         }
       });
+    });
+
+    // Retry button reloads quiz
+    document.getElementById('retry-btn').addEventListener('click', () => {
+      location.reload();
+    });
+
+    // Back to lesson button (you can change the link)
+    document.getElementById('back-btn').addEventListener('click', () => {
+      window.location.href = "lesson.html"; // Change this to your lesson page
     });
   </script>
 </body>
