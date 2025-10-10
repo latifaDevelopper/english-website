@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learn English Now</title>
   <style>
-    /* General Styles */
+
     body {
       font-family: 'Lato', sans-serif;
       margin: 0;
       padding: 0;
       background-color: #f7faff;
       transition: background-color 0.3s, color 0.3s;
+      line-height: 1.6;
     }
 
     body.dark-mode {
@@ -28,19 +29,22 @@
 
     header h1 {
       font-size: 28px;
+      margin: 0;
     }
 
+    /* Navigation */
     nav {
       display: flex;
       justify-content: center;
       background-color: #004aad;
       padding: 10px;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin: 0 15px;
+      margin: 5px 10px;
       padding: 10px 20px;
       border-radius: 5px;
       transition: background 0.3s;
@@ -50,19 +54,25 @@
       background-color: #0056b3;
     }
 
+    /* Typing Effect */
     .typing-effect {
       font-size: 24px;
       font-weight: bold;
       color: #004aad;
       text-align: center;
       margin: 20px 0;
-      height: 30px; /* Prevents content shifting */
+      min-height: 30px;
     }
 
     section {
       padding: 20px;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
+    }
+
+    section h2 {
+      text-align: center;
+      color: #004aad;
     }
 
     /* Tips Accordion */
@@ -121,6 +131,18 @@
       border-radius: 5px;
     }
 
+    .resource-card a {
+      display: inline-block;
+      margin-top: 8px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .resource-card a:hover {
+      text-decoration: underline;
+    }
+
     .dark-mode .resource-card {
       background: #444;
       border-color: #666;
@@ -137,10 +159,64 @@
       background: #007bff;
       color: white;
       cursor: pointer;
+      z-index: 1000;
     }
 
     .dark-mode-toggle.dark {
       background: #555;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 22px;
+      }
+
+      .typing-effect {
+        font-size: 18px;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav a {
+        width: 80%;
+        text-align: center;
+      }
+
+      .resources {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .resource-card {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 15px;
+      }
+
+      header h1 {
+        font-size: 20px;
+      }
+
+      .dark-mode-toggle {
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+
+      section {
+        padding: 15px;
+      }
+
+      .typing-effect {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -207,7 +283,6 @@
         setTimeout(type, 1000);
       }
     }
-
     type();
 
     // Dynamic Tips
